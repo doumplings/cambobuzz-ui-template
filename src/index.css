@@ -134,6 +134,7 @@ transform: translate(0,0.15rem);
   right: 0;
   top: 0;
   margin: 3rem;
+  border-radius: 50%;
 }
 
 #profile-pic:hover {
@@ -389,4 +390,71 @@ transform: translate(0,0.15rem);
 #heart-btn:hover {
   cursor: pointer;
   background-color: rgba(0,0,0,0.2);
+}
+
+#create-post-img {
+  width: 2rem
+}
+
+#create-post-btn {
+  z-index: 3;
+  position: absolute;
+  right: 3rem;
+  bottom: 3rem;
+  border-radius: 10px;
+  border: none;
+  background-color: transparent;
+}
+
+#create-post-page {
+  z-index: 3;
+  position: absolute;
+  top: 8rem;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: var(--cool-gray);
+}
+
+#create-post-modal {
+  position: absolute;
+  top:6rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: var(--cambridge-blue);
+  box-shadow: 0 4px 10px 4px var(--champagne-pink);
+}
+
+#create-post-modal input {
+  padding: 0.5rem 1rem 3rem 0.5rem;
+  margin: 0.5rem;
+}
+
+#create-post-submit-btn {
+  float: right;
+  margin-top: 1rem;
+  width: 6rem;
+  height: 2rem;
+  border-radius: 5px;
+  border: none;
+  font-size: 1.5rem;
+  font-weight:bold;
+}
+
+#create-post-submit-btn, #create-post-cancel-btn, #create-post-btn:hover {
+  cursor: pointer;
+}
+
+#create-post-cancel-btn {
+  float: left;
+  font-size: 1.5rem;
+  font-weight: 100;
+  margin-top: 1rem;
+  border-radius: 5px;
+  border: none;
+  background-color: transparent;
+  text-decoration: underline;
 }

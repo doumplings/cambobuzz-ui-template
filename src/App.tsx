@@ -5,6 +5,7 @@ import Sidebar from "./components/SideBar";
 import SignupForm from "./components/SignUpForm";
 import ProfilePage from "./components/ProfilePage";
 import ContentPage from "./components/ContentPage";
+import CreatePost from "./components/CreatePost";
 
 type User = {
   name: string;
@@ -32,7 +33,6 @@ export default function App() {
   const [profileVisible, setProfileVisible] = useState(false);
   const [loginVisible, setLoginVisible] = useState(false);
   const [signupVisible, setSignupVisible] = useState(false);
-  console.log("visible?", sidebarVisible);
 
   return (
     <>
@@ -62,7 +62,10 @@ export default function App() {
               <ProfilePage />
             </userContext.Provider>
           ) : (
-            <ContentPage />
+            <>
+              <CreatePost />
+              <ContentPage />
+            </>
           )}
         </>
       )}
