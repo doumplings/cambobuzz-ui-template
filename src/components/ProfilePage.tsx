@@ -1,10 +1,16 @@
-import { useContext, useState } from "react";
-import { userContext } from "../App";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ProfilePage = () => {
+  const navigate = useNavigate();
   const [passwordVisible, setPasswordVisibility] = useState(false);
   const [inputReadOnly, setInputReadOnly] = useState(true);
-  const user = useContext(userContext);
+  const user = {
+    name: "Oum Derek",
+    username: "doum",
+    email: "derekoum17@gmail.com",
+    password: "12345678",
+  };
 
   return (
     <div id="profile-page">
@@ -59,7 +65,14 @@ const ProfilePage = () => {
           Show Password
         </label>
         <br />
-        <button id="profile-cancel-button" className="profile-btn">
+        <button
+          id="profile-cancel-button"
+          className="profile-btn"
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
+          {" "}
           Cancel
         </button>
         <button

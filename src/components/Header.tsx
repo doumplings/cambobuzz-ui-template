@@ -1,31 +1,21 @@
+import { Link, Outlet } from "react-router-dom";
+
 interface Props {
-  onProfileClick: () => void;
-  onSignupClick: () => void;
-  onLoginClick: () => void;
   onSidebarClick: () => void;
 }
 
-export default function Header({
-  onProfileClick,
-  onLoginClick,
-  onSignupClick,
-  onSidebarClick,
-}: Props) {
+export default function Header({ onSidebarClick }: Props) {
   return (
     <>
       <div className="header">
-        <h1>CamboBuzz</h1>
+        <h1 className="mt-4">CamboBuzz</h1>
         <div className="login-signup-links">
-          <a href="#" onClick={onSignupClick}>
-            Signup
-          </a>
-          <a href="#" onClick={onLoginClick}>
-            Login
-          </a>
+          <Link to="signup">Signup</Link>
+          <Link to="login">Login</Link>
         </div>
         <div className="header-links">
-          <a href="#">For You</a>
-          <a href="#">Following</a>
+          <Link to="for-you">For You</Link>
+          <Link to="following">Following</Link>
         </div>
         <button id="sidebar-open-btn" className="not-active">
           <img
@@ -34,12 +24,16 @@ export default function Header({
             onClick={onSidebarClick}
           />
         </button>
-        <img
-          id="profile-pic"
-          src="src\assets\Default_pfp.svg.png"
-          alt="Profile Pic"
-          onClick={onProfileClick}
-        />
+        <Link to="profile">
+          <img
+            id="profile-pic"
+            src="src\assets\Default_pfp.svg.png"
+            alt="Profile Pic"
+          />
+        </Link>
+      </div>
+      <div>
+        <Outlet />
       </div>
     </>
   );

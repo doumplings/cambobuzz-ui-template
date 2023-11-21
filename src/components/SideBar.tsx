@@ -27,10 +27,10 @@ export default function Sidebar({
     <>
       {transition((style, item) =>
         item ? (
-          <animated.div style={style} id="sidebar">
+          <animated.div style={style} id="sidebar" className="overflow-auto">
             <button
               id="sidebar-close-btn"
-              className="active"
+              className="w-12 absolute right-0 top-3"
               onClick={onSidebarCloseClick}
             >
               <img
@@ -38,10 +38,12 @@ export default function Sidebar({
                 alt="sidebar icon"
               />
             </button>
-            <h2 id="search-title">Search CamboBuzz</h2>
+            <h2 id="search-title" className="mt-4">
+              Search CamboBuzz
+            </h2>
             <div className="searchbar">
-              <input type="search" placeholder="Search... " />
-              <button id="search-button">
+              <input type="search" placeholder="Search... " className="mr-7" />
+              <button id="search-button" className="relative right-12">
                 <img
                   id="search-pic"
                   src="https://www.svgrepo.com/show/7109/search.svg"
