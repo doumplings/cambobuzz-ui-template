@@ -2,9 +2,10 @@ import { Link, Outlet } from "react-router-dom";
 
 interface Props {
   onSidebarClick: () => void;
+  onProfileClick: () => void;
 }
 
-export default function Header({ onSidebarClick }: Props) {
+export default function Header({ onSidebarClick, onProfileClick }: Props) {
   return (
     <>
       <div className="header">
@@ -24,13 +25,13 @@ export default function Header({ onSidebarClick }: Props) {
             onClick={onSidebarClick}
           />
         </button>
-        <Link to="profile">
-          <img
-            id="profile-pic"
-            src="src\assets\Default_pfp.svg.png"
-            alt="Profile Pic"
-          />
-        </Link>
+
+        <img
+          id="profile-pic"
+          src="src\assets\Default_pfp.svg.png"
+          alt="Profile Pic"
+          onClick={onProfileClick}
+        />
       </div>
       <div>
         <Outlet />

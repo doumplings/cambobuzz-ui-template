@@ -7,12 +7,21 @@ import SignupPage from "./routes/SignupPage";
 import LoginPage from "./routes/LoginPage";
 import ContentPage from "./routes/ContentPage";
 import ProfilePage from "./components/ProfilePage";
+import AdminDashboardPage, {
+  loader as userLoader,
+} from "./routes/AdminDashboardPage";
+import AdminSidebar from "./components/AdminSidebar";
+import ErrorPage from "./routes/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
     children: [
+      {
+        index: true,
+        element: <ContentPage />,
+      },
       {
         path: "for-you",
         element: <ContentPage />,
@@ -34,6 +43,18 @@ const router = createBrowserRouter([
   {
     path: "login",
     element: <LoginPage />,
+  },
+  {
+    path: "admin",
+    element: <AdminSidebar />,
+    children: [
+      {
+        path: "dashboard",
+        loader: userLoader,
+        errorElement: <ErrorPage />,
+        element: <AdminDashboardPage />,
+      },
+    ],
   },
 ]);
 

@@ -25,25 +25,29 @@ export default function Sidebar({
 
   return (
     <>
+      {isVisible ? (
+        <div
+          className="absolute h-full w-full bg-slate-500/25 right-0 top-0 z-10"
+          onClick={onSidebarCloseClick}
+        ></div>
+      ) : null}
       {transition((style, item) =>
         item ? (
-          <animated.div style={style} id="sidebar" className="overflow-auto">
-            <button
-              id="sidebar-close-btn"
-              className="w-12 absolute right-0 top-3"
-              onClick={onSidebarCloseClick}
-            >
-              <img
-                src="https://icons.veryicon.com/png/o/miscellaneous/big-data-regular-monochrome-icon/sidebar-4.png"
-                alt="sidebar icon"
-              />
-            </button>
+          <animated.div
+            style={style}
+            id="sidebar"
+            className="h-screen overflow-auto"
+          >
             <h2 id="search-title" className="mt-4">
               Search CamboBuzz
             </h2>
-            <div className="searchbar">
-              <input type="search" placeholder="Search... " className="mr-7" />
-              <button id="search-button" className="relative right-12">
+            <div className="searchbar z-20">
+              <input
+                type="search"
+                placeholder="Search... "
+                className="w-full z-20"
+              />
+              <button id="search-button" className="relative right-6 z-20">
                 <img
                   id="search-pic"
                   src="https://www.svgrepo.com/show/7109/search.svg"

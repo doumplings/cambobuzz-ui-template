@@ -34,7 +34,7 @@ const ContentPage = () => {
 
   return (
     <div id="for-you-page">
-      <div id="for-you-modal">
+      <div id="for-you-modal" className="md:w-1/2 w-11/12 transition-all">
         {content.map((item) => {
           return (
             <li key={item.username}>
