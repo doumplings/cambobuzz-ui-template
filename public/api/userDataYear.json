@@ -1,0 +1,136 @@
+{
+  "user": {
+    "current_date": {
+      "month": "dec",
+      "year": 2023
+    },
+    "years": {
+      "2023": {
+        "year": 2023,
+        "jan": {
+          "month": "jan",
+          "follower_info": {
+            "follower_count": 15839,
+            "follower_prev": 13089
+          },
+          "following_info": {
+            "following_count": 15839
+          }
+        },
+        "feb": {
+          "month": "feb",
+          "follower_info": {
+            "follower_count": 15839,
+            "follower_prev": 13089
+          },
+          "following_info": {
+            "following_count": 15839
+          }
+        },
+        "mar": {
+          "month": "mar",
+          "follower_info": {
+            "follower_count": 15839,
+            "follower_prev": 13089
+          },
+          "following_info": {
+            "following_count": 15839
+          }
+        },
+        "apr": {
+          "month": "apr",
+          "follower_info": {
+            "follower_count": 15839,
+            "follower_prev": 13089
+          },
+          "following_info": {
+            "following_count": 15839
+          }
+        },
+        "may": {
+          "month": "may",
+          "follower_info": {
+            "follower_count": 15839,
+            "follower_prev": 13089
+          },
+          "following_info": {
+            "following_count": 15839
+          }
+        },
+        "jun": {
+          "month": "jun",
+          "follower_info": {
+            "follower_count": 15839,
+            "follower_prev": 13089
+          },
+          "following_info": {
+            "following_count": 15839
+          }
+        },
+        "jul": {
+          "month": "jul",
+          "follower_info": {
+            "follower_count": 15839,
+            "follower_prev": 13089
+          },
+          "following_info": {
+            "following_count": 15839
+          }
+        },
+        "aug": {
+          "month": "aug",
+          "follower_info": {
+            "follower_count": 15839,
+            "follower_prev": 13089
+          },
+          "following_info": {
+            "following_count": 15839
+          }
+        },
+        "sep": {
+          "month": "sep",
+          "follower_info": {
+            "follower_count": 15839,
+            "follower_prev": 13089
+          },
+          "following_info": {
+            "following_count": 15839
+          }
+        },
+        "oct": {
+          "month": "oct",
+          "follower_info": {
+            "follower_count": 15839,
+            "follower_prev": 13089
+          },
+          "following_info": {
+            "following_count": 15839
+          }
+        },
+        "nov": {
+          "month": "nov",
+          "follower_info": {
+            "follower_count": 129831,
+            "follower_prev": 123123
+          },
+          "following_info": {
+            "following_count": 213
+          }
+        },
+        "dec": {
+          "month": "dec",
+          "follower_info": {
+            "follower_count": null,
+            "follower_prev": null
+          },
+          "following_info": {
+            "following_count": null
+          }
+        }
+      },
+      "2022": {
+        "year": 2022
+      }
+    }
+  }
+}

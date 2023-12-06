@@ -37,8 +37,8 @@ export default function ProfileDrawer({
             </button>{" "}
             <br />
             <button className=" w-full top-24 text-left rounded p-2 hover:bg-blue-400/50">
-              <Link to="admin/dashboard" onClick={onSidebarCloseClick}>
-                Dashboard
+              <Link to="admin/myprofile" onClick={onSidebarCloseClick}>
+                My Profile Insights
               </Link>
             </button>
           </animated.div>

@@ -20,8 +20,12 @@ const AdminSidebar = () => {
         <h1 className="relative text-center top-4 text-2xl font-medium text-green-950 border-b pb-4 ">
           Admin Tools
         </h1>
+
         <button className="relative text-center top-12 py-2 text-base text-green-950 rounded hover:bg-blue-400/50 ">
-          <Link to="dashboard">Dashboard</Link>
+          <Link to="myprofile">My Profile</Link>
+        </button>
+        <button className="relative text-center top-20 py-2 text-base text-green-950 rounded hover:bg-blue-400/50 ">
+          <Link to="dashboard">Insights</Link>
         </button>
       </div>
       <div

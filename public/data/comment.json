@@ -1,0 +1,46 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "description": "wow",
+      "postId": 1,
+      "userId": 1
+    },
+    {
+      "id": 2,
+      "description": "amazing",
+      "postId": 1,
+      "userId": 2
+    },
+    {
+      "id": 3,
+      "description": "i love it",
+      "postId": 1,
+      "userId": 1
+    },
+    {
+      "id": 4,
+      "description": "ew",
+      "postId": 3,
+      "userId": 1
+    },
+    {
+      "id": 5,
+      "description": "why",
+      "postId": 2,
+      "userId": 4
+    },
+    {
+      "id": 6,
+      "description": "what",
+      "postId": 4,
+      "userId": 5
+    },
+    {
+      "id": 7,
+      "description": "how??",
+      "postId": 5,
+      "userId": 5
+    }
+  ]
+}

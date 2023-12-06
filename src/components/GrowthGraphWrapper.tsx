@@ -1,6 +1,6 @@
 import GrowthChart from "./GrowthChart";
 
-const GrowthGraph = () => {
+const GrowthGraphWrapper = () => {
   return (
     <div
       className="w-full h-full rounded-md p-4
@@ -11,4 +11,4 @@ const GrowthGraph = () => {
   );
 };
 
-export default GrowthGraph;
+export default GrowthGraphWrapper;

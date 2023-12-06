@@ -12,6 +12,7 @@ import AdminDashboardPage, {
 } from "./routes/AdminDashboardPage";
 import AdminSidebar from "./components/AdminSidebar";
 import ErrorPage from "./routes/ErrorPage";
+import { MyProfilePage } from "./routes/MyProfilePage";
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,11 @@ const router = createBrowserRouter([
         loader: userLoader,
         errorElement: <ErrorPage />,
         element: <AdminDashboardPage />,
+      },
+      {
+        path: "myprofile",
+        errorElement: <ErrorPage />,
+        element: <MyProfilePage />,
       },
     ],
   },

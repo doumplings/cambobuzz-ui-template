@@ -1,10 +1,5 @@
 import { useRef, useState } from "react";
 
-export const getUserData = () => {
-  const userData = fetch("/api/userData.json?url");
-  return userData;
-};
-
 export type userStatsType = {
   likes: number;
   comments: number;

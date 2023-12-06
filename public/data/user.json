@@ -1,0 +1,34 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "John Smith",
+      "email": "johnsm@gmail.com",
+      "password": "john1234"
+    },
+    {
+      "id": 2,
+      "name": "Apple pie",
+      "email": "apppie@gmail.com",
+      "password": "dessertsthebest"
+    },
+    {
+      "id": 3,
+      "name": "Banana Pudding",
+      "email": "bananapudding@gmail.com",
+      "password": "banana22"
+    },
+    {
+      "id": 4,
+      "name": "green fish",
+      "email": "greenie@gmail.com",
+      "password": "ilovefish"
+    },
+    {
+      "id": 5,
+      "name": "blueball",
+      "email": "iloveballs@gmail.com",
+      "password": "ballislife"
+    }
+  ]
+}
