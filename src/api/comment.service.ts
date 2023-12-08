@@ -1,8 +1,11 @@
+import { UserType, getUser } from "./user.service";
+
 export type CommentsType = {
   id: number;
   description: string;
   postId: number;
   userId: number;
+  user: UserType | undefined;
 };
 
 export const getAllComments = async (): Promise<CommentsType[]> => {
@@ -17,6 +20,26 @@ export const getCommentsByUserId = async (userId: number) => {
   const comment = comments?.filter((data) => data?.userId !== userId);
 
   return comment;
+};
+
+type CommentsPostIdProps = {
+  postId: number;
+  includeUser?: boolean;
+};
+
+export const getCommentsByPostId = async ({
+  postId,
+}: CommentsPostIdProps): Promise<CommentsType[]> => {
+  const comments = await getAllComments();
+
+  const postComments = comments?.filter((data) => data.postId === postId);
+
+  return Promise.all(
+    postComments?.map(async (postComment: CommentsType) => {
+      const user = await getUser(postComment.userId);
+      return { ...postComment, user };
+    })
+  );
 };
 
 export const getCommentsCountByPostId = async (postId: number) => {

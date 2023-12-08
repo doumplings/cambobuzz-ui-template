@@ -1,6 +1,6 @@
-import { UserType } from "../api/user.service";
-import pfp from "../assets/pfp.svg";
-import edit from "../assets/pencil.png";
+import { UserType } from "../../api/user.service";
+import pfp from "../../assets/pfp.svg";
+import edit from "../../assets/pencil.png";
 import { useState } from "react";
 
 interface UserInfoProps {

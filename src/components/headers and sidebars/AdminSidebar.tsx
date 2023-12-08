@@ -1,5 +1,5 @@
 import { Link, Outlet } from "react-router-dom";
-import close from "../assets/close.svg";
+import close from "../../assets/close.svg";
 
 const AdminSidebar = () => {
   return (

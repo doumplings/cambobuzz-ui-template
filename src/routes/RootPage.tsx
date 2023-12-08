@@ -1,8 +1,7 @@
 import { useState } from "react";
-import Header from "../components/Header";
-import Sidebar from "../components/SideBar";
-import CreatePost from "../components/CreatePost";
-import ProfileDrawer from "../components/ProfileDrawer";
+import Header from "../components/headers and sidebars/Header";
+import Sidebar from "../components/headers and sidebars/SideBar";
+import ProfileDrawer from "../components/headers and sidebars/ProfileDrawer";
 
 export default function Root() {
   const [sidebarVisible, setSidebarVisibility] = useState(false);
@@ -28,7 +27,6 @@ export default function Root() {
         isVisible={profileBarVisible}
         onSidebarCloseClick={() => setprofileBarVisibility(!profileBarVisible)}
       />
-      <CreatePost />
     </>
   );
 }

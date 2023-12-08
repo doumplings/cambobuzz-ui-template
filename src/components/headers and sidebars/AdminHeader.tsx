@@ -1,6 +1,6 @@
-import mail from "../assets/mail.svg";
+import mail from "../../assets/mail.svg";
 import { Link } from "react-router-dom";
-import close from "../assets/close.svg";
+import close from "../../assets/close.svg";
 
 interface AdminHeaderProps {
   onMailClick: () => void;
@@ -26,7 +26,7 @@ const AdminHeader = ({ onMailClick }: AdminHeaderProps) => {
 
       <div className="absolute grid grid-cols-2 place-items-center gap-8 z-10 top-0 left-1/2 -translate-x-1/2 text-lg md:hidden">
         <button className=" text-green-950 rounded hover:bg-blue-400/50 ">
-          <Link to="../myprofile">My Profile</Link>
+          <Link to="../myprofile">Profile</Link>
         </button>
         <button className=" text-green-950 rounded hover:bg-blue-400/50 ">
           <Link to="../dashboard">Insights</Link>

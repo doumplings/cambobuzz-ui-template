@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Chart } from "react-google-charts";
-import { GraphDataContext } from "../utils/GraphDataContext";
-import { getFollowersYearly } from "../utils/getFollowersYearly";
+import { GraphDataContext } from "../../utils/GraphDataContext";
+import { getFollowersYearly } from "../../utils/getFollowersYearly";
 
 export const data = [
   ["Months", "Followers"],

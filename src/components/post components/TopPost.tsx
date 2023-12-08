@@ -1,7 +1,7 @@
-import heart from "../assets/heart.svg";
-import comments from "../assets/comment.svg";
-import shares from "../assets/share.svg";
-import { mostLikedType } from "../utils/getUserData";
+import heart from "../../assets/heart.svg";
+import comments from "../../assets/comment.svg";
+import shares from "../../assets/share.svg";
+import { mostLikedType } from "../../utils/getUserData";
 
 interface TopPostProps {
   mostLiked: mostLikedType;

@@ -98,10 +98,8 @@ transform: translate(0,0.15rem);
   position: absolute;
   left: 0;
   top: 0;
-  height: 8rem;
   width: 100%;
   background-color: var(--marian-blue);
-  /* box-shadow: 1rem 0 1rem 1rem var(--champagne-pink); */
 }
 
 .header h1 {
@@ -340,19 +338,19 @@ transform: translate(0,0.15rem);
 
 #for-you-page {
   position: absolute;
-  top: 8rem;
+  bottom: 0;
   left: 0;
   display: flex;
   flex-wrap: wrap;
   overflow: auto;
   width: 100%;
-  height: 100%;
+  height: auto;
   background-color: var(--cool-gray);
 }
 
 #for-you-modal {
   position: absolute;
-  top: 2rem;
+  top:1rem;
   left: 50%;
   transform: translate(-50%);
   display: flex;
@@ -366,7 +364,6 @@ transform: translate(0,0.15rem);
   padding: 1rem;
   border-radius: 5px;
   background-color: var(--marian-blue);
-  box-shadow: 0 0 8px 4px var(--champagne-pink);
   -webkit-text-fill-color: var(--cambridge-blue);
 }
 
@@ -413,7 +410,7 @@ transform: translate(0,0.15rem);
 #create-post-page {
   z-index: 3;
   position: absolute;
-  top: 8rem;
+  top: 0;
   left: 0;
   display: flex;
   justify-content: center;
@@ -424,12 +421,8 @@ transform: translate(0,0.15rem);
 }
 
 #create-post-modal {
-  position: absolute;
-  top:6rem;
-  padding: 1rem;
-  border-radius: 0.5rem;
+ 
   background-color: var(--cambridge-blue);
-  box-shadow: 0 4px 10px 4px var(--champagne-pink);
 }
 
 #create-post-modal input {

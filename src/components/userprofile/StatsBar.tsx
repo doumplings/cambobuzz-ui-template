@@ -1,10 +1,8 @@
-import heart from "../assets/heart.svg";
-import comments from "../assets/comment.svg";
-import shares from "../assets/share.svg";
-import pfp from "../assets/pfp.svg";
-import { userStatsType } from "../utils/getUserData";
-import { StatisticType } from "../api/user.service";
-import { useState } from "react";
+import heart from "../../assets/heart.svg";
+import comments from "../../assets/comment.svg";
+import shares from "../../assets/share.svg";
+import pfp from "../../assets/pfp.svg";
+import { StatisticType } from "../../api/user.service";
 
 interface StatsBarProps {
   userStats: StatisticType | undefined;

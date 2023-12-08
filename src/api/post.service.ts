@@ -1,12 +1,12 @@
 import { getCommentsCountByPostId } from "./comment.service";
-import { getLikesByUserId, getLikesCountByPostId } from "./like.service";
+import { getLikesCountByPostId } from "./like.service";
 import { getSharesCountByPostId } from "./share.service";
 import { UserType, getUser } from "./user.service";
 
 export type PostsType = {
   id: number;
-  user: UserType;
-  postStats: PostStatsType;
+  user?: UserType;
+  postStats?: PostStatsType;
   description: string;
   viewCount: number;
   userId: number;

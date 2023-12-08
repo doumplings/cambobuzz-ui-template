@@ -1,18 +1,21 @@
 import { useEffect, useState } from "react";
-import AdminHeader from "../components/AdminHeader";
-import ProfilePage from "../components/ProfilePage";
-import StatsBar from "../components/StatsBar";
-import { UserInfo } from "../components/UserInfo";
+import AdminHeader from "../components/headers and sidebars/AdminHeader";
+import StatsBar from "../components/userprofile/StatsBar";
+import { UserInfo } from "../components/userprofile/UserInfo";
 import {
   StatisticType,
   UserType,
   getMyStats,
   getUser,
 } from "../api/user.service";
-import { MyPosts } from "../components/MyPosts";
+import { MyPosts } from "../components/post components/MyPosts";
+import { Loading } from "../components/Loading";
+import { PostsType, getMyPosts } from "../api/post.service";
 
 export const MyProfilePage = () => {
+  const [posts, setPosts] = useState<PostsType[]>([]);
   const [userStats, setUserStats] = useState<StatisticType>();
+  const [loading, setLoading] = useState(false);
   const [user, setUser] = useState<UserType | undefined>({
     id: 0,
     name: "",
@@ -21,8 +24,11 @@ export const MyProfilePage = () => {
   });
 
   useEffect(() => {
+    setLoading(true);
     getMyStats(1).then((res) => setUserStats(res));
     getUser(1).then((res) => setUser(res));
+    getMyPosts(1).then((res) => setPosts(res));
+    setLoading(false);
   }, []);
 
   return (
@@ -38,7 +44,11 @@ export const MyProfilePage = () => {
         <StatsBar userStats={userStats} />
       </div>
       <div className="absolute top-[44rem] md:top-72  w-full px-4">
-        <MyPosts getOnlyMyPosts={true} />
+        {!loading ? (
+          <MyPosts getOnlyMyPosts={true} posts={posts} />
+        ) : (
+          <Loading width="10rem" />
+        )}
       </div>
     </div>
   );

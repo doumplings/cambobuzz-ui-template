@@ -6,11 +6,11 @@ import Root from "./routes/RootPage";
 import SignupPage from "./routes/SignupPage";
 import LoginPage from "./routes/LoginPage";
 import ContentPage from "./routes/ContentPage";
-import ProfilePage from "./components/ProfilePage";
+import ProfilePage from "./components/userprofile/ProfilePage";
 import AdminDashboardPage, {
   loader as userLoader,
 } from "./routes/AdminDashboardPage";
-import AdminSidebar from "./components/AdminSidebar";
+import AdminSidebar from "./components/headers and sidebars/AdminSidebar";
 import ErrorPage from "./routes/ErrorPage";
 import { MyProfilePage } from "./routes/MyProfilePage";
 

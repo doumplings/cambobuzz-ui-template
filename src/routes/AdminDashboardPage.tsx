@@ -1,9 +1,9 @@
 import { useLoaderData } from "react-router-dom";
-import AdminHeader from "../components/AdminHeader";
-import GrowthGraphWrapper from "../components/GrowthGraphWrapper";
-import GrowthStats from "../components/GrowthStats";
-import StatsBar from "../components/StatsBar";
-import TopPost from "../components/TopPost";
+import AdminHeader from "../components/headers and sidebars/AdminHeader";
+import GrowthGraphWrapper from "../components/userprofile/GrowthGraphWrapper";
+import GrowthStats from "../components/userprofile/GrowthStats";
+import StatsBar from "../components/userprofile/StatsBar";
+import TopPost from "../components/post components/TopPost";
 import {
   GrowthStatsType,
   getGrowthStats,

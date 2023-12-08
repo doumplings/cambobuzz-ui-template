@@ -20,7 +20,7 @@ export default function ProfileDrawer({
     <>
       {isVisible ? (
         <div
-          className="absolute h-full w-full z-10 bg-slate-500/25 left-0 top-0"
+          className="absolute h-screen w-full z-10 bg-slate-500/25 left-0 top-0"
           onClick={onSidebarCloseClick}
         ></div>
       ) : null}

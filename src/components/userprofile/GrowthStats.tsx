@@ -1,4 +1,4 @@
-import { GrowthStatsType } from "../utils/getUserData";
+import { GrowthStatsType } from "../../utils/getUserData";
 
 interface GrowthStatsProps {
   growthStats: GrowthStatsType;
