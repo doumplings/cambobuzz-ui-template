@@ -23,7 +23,6 @@
   transform: translate(-50%,-50%);
   padding: 1rem;
   border-radius: 0.5rem;
-  background-color: var(--cambridge-blue);
   box-shadow: 0 4px 10px 4px var(--champagne-pink);
 }
 
@@ -39,26 +38,6 @@
   padding: 0.3rem;
 }
 
-#login-modal a {
-  position: absolute;
-  right: 1rem;
-  font-size: 0.8rem;
-  text-decoration: none;
-  color: var(--champagne-pink);
-}
-
-#login-modal a:hover {
-  color: rgba(0,0,0,0.2);
-  text-decoration: underline;
-}
-
-#login-modal button {
-  position: relative;
-  left: 50%;
-  transform: translate(-50%);
-  width: 100%;
-  margin: 1rem 0 0.5rem 0;
-}
 
 #already {
   font-size: 0.8rem;

@@ -16,7 +16,7 @@ export const PostLikeCommentShareCard = ({ item }: Props) => {
   return (
     <>
       {item.postStats === undefined ? null : (
-        <span className="flex flex-row gap-8 justify-around">
+        <span className="flex flex-row gap-8 justify-around ">
           <LikeButton numLikes={item.postStats.likesCount} />
           <CommentButton
             numComments={item.postStats.commentsCount + newCommentsCount}

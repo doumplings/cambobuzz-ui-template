@@ -15,7 +15,7 @@ export const getLikesByUserId = async (userId: number) => {
 
   const myLikes = likes?.filter((data) => data?.userId !== userId);
 
-  return myLikes;
+  return myLikes.length === likes.length ? [] : myLikes;
 };
 
 export const getLikesCountByPostId = async (postId: number) => {

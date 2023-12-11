@@ -1,9 +1,10 @@
 import { PostsType, getPostsWithStats } from "../api/post.service";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { MyPosts } from "../components/post components/MyPosts";
 import { Loading } from "../components/Loading";
 import CreatePost from "../components/post components/CreatePost";
-import { UserType, getMe } from "../api/user.service";
+import { UserType } from "../api/user.service";
+import { UserContext } from "../utils/UserContext";
 
 const ContentPage = () => {
   const [createPostVisible, setCreatePostVisibility] = useState(false);
@@ -13,13 +14,14 @@ const ContentPage = () => {
   const [newPost, setNewPost] = useState<PostsType>();
   const [allPost, setAllPosts] = useState<PostsType[]>([]);
   const [user, setUser] = useState<UserType>();
+  const userContext = useContext(UserContext);
 
   useEffect(() => {
     setLoading(true);
     getPostsWithStats()
       .then((res) => setPosts(res))
       .finally(() => setLoading(false));
-    getMe(1).then((res) => setUser(res));
+    setUser(userContext?.user);
     return;
   }, [createPostVisible === true]);
 

@@ -1,4 +1,7 @@
+import { useContext, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
+import { UserContext } from "../../utils/UserContext";
+import { LogOutPage } from "../../routes/LogOutPage";
 
 interface Props {
   onSidebarClick: () => void;
@@ -6,14 +9,25 @@ interface Props {
 }
 
 export default function Header({ onSidebarClick, onProfileClick }: Props) {
+  const userContext = useContext(UserContext);
+
   return (
     <>
       <div className="header">
         <h1 className="mt-4">CamboBuzz</h1>
-        <div className="login-signup-links">
-          <Link to="signup">Signup</Link>
-          <Link to="login">Login</Link>
-        </div>
+        {userContext?.user.id === 0 ? (
+          <div className="login-signup-links">
+            <Link to="signup">Signup</Link>
+            <Link to="login">Login</Link>
+          </div>
+        ) : (
+          <>
+            <p className="absolute right-4 top-4 ">
+              Signed in as: {userContext?.user.name}
+            </p>
+            <LogOutPage />
+          </>
+        )}
         <div className="header-links">
           <Link to="for-you">For You</Link>
           <Link to="following">Following</Link>

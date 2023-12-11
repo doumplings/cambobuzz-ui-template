@@ -19,7 +19,7 @@ export const getCommentsByUserId = async (userId: number) => {
 
   const comment = comments?.filter((data) => data?.userId !== userId);
 
-  return comment;
+  return comment.length === comments.length ? [] : comment;
 };
 
 type CommentsPostIdProps = {

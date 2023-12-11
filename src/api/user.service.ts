@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { getCommentsByUserId } from "./comment.service";
 import { getLikesByUserId } from "./like.service";
 import { getPostByUserId } from "./post.service";
@@ -78,4 +79,17 @@ export const getMyStats = async (userId: number): Promise<StatisticType> => {
     shareCount: sharesCount,
   });
   return { ...stats };
+};
+
+export const getNewUserId = async () => {
+  const users = await getAllUser();
+
+  return users.length + 1;
+};
+
+export const getUserbyEmail = async (email: string): Promise<UserType> => {
+  const users = await getAllUser();
+  const user = users?.filter((data) => data?.email === email);
+
+  return user[0];
 };

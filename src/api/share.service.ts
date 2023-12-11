@@ -16,7 +16,7 @@ export const getSharesByUserId = async (userId: number) => {
 
   const userShare = shares?.filter((data) => data.userId !== userId);
 
-  return userShare;
+  return userShare.length === shares.length ? [] : userShare;
 };
 
 export const getSharesCountByPostId = async (postId: number) => {

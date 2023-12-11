@@ -44,6 +44,11 @@ export const MyPosts = ({ posts, getOnlyMyPosts }: MyPostsProps) => {
               </li>
             );
           })}
+        {myPosts.length === 0 ? (
+          <p className="absolute text-2xl text-center top-32 left-1/2 -translate-x-1/2">
+            No Posts Yet
+          </p>
+        ) : null}
       </div>
     </div>
   );

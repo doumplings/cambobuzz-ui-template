@@ -1,16 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../utils/UserContext";
 
 const ProfilePage = () => {
   const navigate = useNavigate();
   const [passwordVisible, setPasswordVisibility] = useState(false);
   const [inputReadOnly, setInputReadOnly] = useState(true);
-  const user = {
-    name: "Oum Derek",
-    username: "doum",
-    email: "derekoum17@gmail.com",
-    password: "12345678",
-  };
+  const userContext = useContext(UserContext);
 
   return (
     <div id="profile-page">
@@ -28,7 +24,7 @@ const ProfilePage = () => {
           id="profile-detail-input"
           className={inputReadOnly ? "unmodifiable" : "modifiable"}
           type="text"
-          value={user.name}
+          value={userContext?.user.name}
           readOnly={inputReadOnly}
         />{" "}
         <br />
@@ -36,15 +32,7 @@ const ProfilePage = () => {
           id="profile-detail-input"
           className={inputReadOnly ? "unmodifiable" : "modifiable"}
           type="text"
-          value={user.username}
-          readOnly={inputReadOnly}
-        />{" "}
-        <br />
-        <input
-          id="profile-detail-input"
-          className={inputReadOnly ? "unmodifiable" : "modifiable"}
-          type="email"
-          value={user.email}
+          value={userContext?.user.email}
           readOnly={inputReadOnly}
         />{" "}
         <br />
@@ -52,7 +40,7 @@ const ProfilePage = () => {
           id="profile-detail-input"
           className={inputReadOnly ? "unmodifiable" : "modifiable"}
           type={passwordVisible ? "text" : "password"}
-          value={user.password}
+          value={userContext?.user.password}
           readOnly={inputReadOnly}
         />
         <br />
