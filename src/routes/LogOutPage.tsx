@@ -1,11 +1,10 @@
 import { LogOutModal } from "../components/LogOutModal";
 import { useState } from "react";
-import { useContext } from "react";
-import { UserContext } from "../utils/UserContext";
+import { useUserContext } from "../utils/UserContext";
 
 export const LogOutPage = () => {
   const [isLogOutVisible, setLogOutVisibility] = useState(false);
-  const userContext = useContext(UserContext);
+  const { setUser } = useUserContext();
 
   return (
     <>
@@ -19,7 +18,7 @@ export const LogOutPage = () => {
         isVisible={isLogOutVisible}
         onCancelClick={() => setLogOutVisibility(false)}
         onConfirmClick={() =>
-          userContext?.setUser({
+          setUser({
             id: 0,
             name: "",
             email: "",

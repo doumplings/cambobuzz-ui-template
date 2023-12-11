@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { getCommentsByUserId } from "./comment.service";
 import { getLikesByUserId } from "./like.service";
 import { getPostByUserId } from "./post.service";

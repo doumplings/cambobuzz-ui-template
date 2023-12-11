@@ -1,9 +1,8 @@
-import { useContext } from "react";
 import SignupForm from "../components/SignUpForm";
-import { UserContext } from "../utils/UserContext";
+import { useUserContext } from "../utils/UserContext";
 
 export default function SignupPage() {
-  const userContext = useContext(UserContext);
+  const { setUser } = useUserContext();
 
-  return <SignupForm onSubmitClick={(user) => userContext?.setUser(user)} />;
+  return <SignupForm onSubmitClick={(user) => setUser(user)} />;
 }

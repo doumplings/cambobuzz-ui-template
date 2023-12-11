@@ -5,8 +5,8 @@ import { UserType, getUser } from "./user.service";
 
 export type PostsType = {
   id: number;
-  user?: UserType;
-  postStats?: PostStatsType;
+  user: UserType;
+  postStats: PostStatsType;
   description: string;
   viewCount: number;
   userId: number;

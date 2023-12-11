@@ -1,33 +1,29 @@
 import { PostsType, getPostsWithStats } from "../api/post.service";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { MyPosts } from "../components/post components/MyPosts";
 import { Loading } from "../components/Loading";
 import CreatePost from "../components/post components/CreatePost";
-import { UserType } from "../api/user.service";
-import { UserContext } from "../utils/UserContext";
+import { useUserContext } from "../utils/UserContext";
+import { usePostsContext } from "../utils/PostsContext";
 
 const ContentPage = () => {
   const [createPostVisible, setCreatePostVisibility] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [posts, setPosts] = useState<PostsType[]>([]);
   const [newPostDescription, setNewPostDescription] = useState("");
-  const [newPost, setNewPost] = useState<PostsType>();
-  const [allPost, setAllPosts] = useState<PostsType[]>([]);
-  const [user, setUser] = useState<UserType>();
-  const userContext = useContext(UserContext);
+  const { user } = useUserContext();
+  const { posts, setPosts } = usePostsContext();
 
   useEffect(() => {
     setLoading(true);
     getPostsWithStats()
-      .then((res) => setPosts(res))
+      .then((res) => (posts.length === 0 ? setPosts(res) : null))
       .finally(() => setLoading(false));
-    setUser(userContext?.user);
     return;
-  }, [createPostVisible === true]);
+  }, []);
 
   useEffect(() => {
     const newPost: PostsType = {
-      id: allPost.length === 0 ? posts.length + 1 : allPost.length + 1,
+      id: posts.length + 1,
       description: newPostDescription,
       user: user,
       postStats: {
@@ -36,45 +32,33 @@ const ContentPage = () => {
         sharesCount: 0,
       },
       viewCount: 0,
-      userId: 1,
+      userId: user?.id || 0,
     };
 
-    newPostDescription === "" ? null : setNewPost(newPost);
+    newPostDescription === "" ? null : setPosts((prev) => [...prev, newPost]);
   }, [newPostDescription]);
-
-  useEffect(() => {
-    if (newPost === undefined) {
-      null;
-    } else if (allPost.length === 0) {
-      setAllPosts([...posts, newPost]);
-    } else {
-      setAllPosts((prev) => [...prev, newPost]);
-    }
-  }, [newPost]);
 
   return (
     <div id="for-you-page" className="top-[7rem] md:top-[8rem]">
       {createPostVisible ? null : (
         <div id="for-you-modal" className="md:w-1/2 w-11/12 transition-all">
-          {!loading ? (
-            <MyPosts posts={allPost.length === 0 ? posts : allPost} />
-          ) : (
-            <Loading width={"10rem"} />
-          )}
+          {!loading ? <MyPosts posts={posts} /> : <Loading width={"10rem"} />}
         </div>
       )}
-      <CreatePost
-        userName={user === undefined ? "Guest" : user.name}
-        newPostVisible={createPostVisible}
-        onSubmit={(newPostDescription) => (
-          setNewPostDescription(newPostDescription),
-          setCreatePostVisibility(false)
-        )}
-        onCloseClick={() => setCreatePostVisibility(false)}
-        onCreateClick={() => {
-          setCreatePostVisibility(true), setNewPost(undefined);
-        }}
-      />
+      {user.id === 0 ? null : (
+        <CreatePost
+          userName={user === undefined ? "Guest" : user.name}
+          newPostVisible={createPostVisible}
+          onSubmit={(newPostDescription) => (
+            setNewPostDescription(newPostDescription),
+            setCreatePostVisibility(false)
+          )}
+          onCloseClick={() => setCreatePostVisibility(false)}
+          onCreateClick={() => {
+            setCreatePostVisibility(true);
+          }}
+        />
+      )}
     </div>
   );
 };

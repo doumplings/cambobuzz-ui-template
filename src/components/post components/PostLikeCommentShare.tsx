@@ -28,7 +28,7 @@ export const PostLikeCommentShareCard = ({ item }: Props) => {
       <CommentPopUp
         onSubmitClick={() => setNewCommentsCount(newCommentsCount + 1)}
         postId={item.id}
-        userId={1}
+        userId={item.user.id}
         commentsVisibility={isCommentsVisible}
       />
     </>

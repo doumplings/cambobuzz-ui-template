@@ -1,9 +1,8 @@
-import { useContext } from "react";
 import LoginForm from "../components/LoginForm";
-import { UserContext } from "../utils/UserContext";
+import { useUserContext } from "../utils/UserContext";
 
 export default function LoginPage() {
-  const value = useContext(UserContext);
+  const { setUser } = useUserContext();
 
-  return <LoginForm onSubmitClick={(user) => value?.setUser(user)} />;
+  return <LoginForm onSubmitClick={(user) => setUser(user)} />;
 }

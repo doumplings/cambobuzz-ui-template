@@ -36,7 +36,7 @@ const CreatePost = ({
                 id="create-post-submit-btn"
                 type="submit"
                 className="float-right font-bold text-xl mt-2 hover:bg-gray-500/20 rounded px-2"
-                onClick={() => onSubmit(newPost)}
+                onClick={() => (onSubmit(newPost), setNewPost(""))}
               >
                 Post
               </button>

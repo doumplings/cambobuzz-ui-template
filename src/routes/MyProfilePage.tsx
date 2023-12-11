@@ -1,32 +1,26 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import AdminHeader from "../components/headers and sidebars/AdminHeader";
 import StatsBar from "../components/userprofile/StatsBar";
 import { UserInfo } from "../components/userprofile/UserInfo";
-import {
-  StatisticType,
-  UserType,
-  getMyStats,
-  getUser,
-} from "../api/user.service";
+import { StatisticType, getMyStats } from "../api/user.service";
 import { MyPosts } from "../components/post components/MyPosts";
 import { Loading } from "../components/Loading";
-import { PostsType, getMyPosts } from "../api/post.service";
-import { UserContext } from "../utils/UserContext";
+import { useUserContext } from "../utils/UserContext";
+import { usePostsContext } from "../utils/PostsContext";
 
 export const MyProfilePage = () => {
-  const [posts, setPosts] = useState<PostsType[]>([]);
   const [userStats, setUserStats] = useState<StatisticType>();
   const [loading, setLoading] = useState(false);
-  const [user, setUser] = useState<UserType | undefined>();
-  const userContext = useContext(UserContext);
+  const { user } = useUserContext();
+  const { posts } = usePostsContext();
 
   useEffect(() => {
     setLoading(true);
-    getMyStats(userContext?.user.id || 0).then((res) => setUserStats(res));
-    setUser(userContext?.user);
-    getMyPosts(userContext?.user.id || 0).then((res) => setPosts(res));
+    getMyStats(user.id).then((res) => setUserStats(res));
     setLoading(false);
   }, []);
+
+  const myPosts = posts.filter((post) => post.userId === user.id);
 
   return (
     <div
@@ -42,7 +36,7 @@ export const MyProfilePage = () => {
       </div>
       <div className="absolute top-[44rem] md:top-72  w-full px-4">
         {!loading ? (
-          <MyPosts getOnlyMyPosts={true} posts={posts} />
+          <MyPosts getOnlyMyPosts={true} posts={myPosts} />
         ) : (
           <Loading width="10rem" />
         )}
