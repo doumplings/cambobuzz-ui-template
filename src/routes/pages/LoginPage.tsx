@@ -1,5 +1,5 @@
-import LoginForm from "../components/LoginForm";
-import { useUserContext } from "../utils/UserContext";
+import LoginForm from "../../components/LoginForm";
+import { useUserContext } from "../../Context/UserContext";
 
 export default function LoginPage() {
   const { setUser } = useUserContext();

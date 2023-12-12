@@ -1,5 +1,5 @@
-import SignupForm from "../components/SignUpForm";
-import { useUserContext } from "../utils/UserContext";
+import SignupForm from "../../components/SignUpForm";
+import { useUserContext } from "../../Context/UserContext";
 
 export default function SignupPage() {
   const { setUser } = useUserContext();

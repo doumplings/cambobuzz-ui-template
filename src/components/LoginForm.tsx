@@ -18,10 +18,12 @@ export default function LoginForm({ onSubmitClick }: LoginFormProps) {
   }, [email]);
 
   const handleSubmit = () => {
-    if (user?.password !== password) {
+    if (user?.password !== password || user.email === "") {
       setHasWrongPassword(true);
     } else {
+      setHasWrongPassword(false);
       onSubmitClick(user);
+      navigate("/for-you");
     }
   };
 
@@ -73,11 +75,11 @@ export default function LoginForm({ onSubmitClick }: LoginFormProps) {
           className="bg-neutral-300 hover:bg-neutral-400 rounded-md w-full mt-2 text-xl font-bold"
           onClick={handleSubmit}
         >
-          <Link to="../for-you">Log in</Link>
+          Log In
         </button>
         {hasWrongPassword ? (
           <p className="text-red-400 text-sm">
-            Wrong Password, Please Try Again.
+            Wrong Password or Email, Please Try Again.
           </p>
         ) : null}
         <div className="mt-8">

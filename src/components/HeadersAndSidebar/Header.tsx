@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
-import { UserContext } from "../../utils/UserContext";
-import { LogOutPage } from "../../routes/LogOutPage";
+import { UserContext } from "../../Context/UserContext";
+import { LogOutPage } from "../../routes/pages/LogOutPage";
 
 interface Props {
   onSidebarClick: () => void;

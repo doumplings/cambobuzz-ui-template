@@ -90,3 +90,13 @@ export const getMyPosts = async (userId: number): Promise<PostsType[]> => {
 
   return posts?.filter((data) => data.userId === userId);
 };
+
+export const getTrendingPosts = async (): Promise<PostsType[]> => {
+  const posts = await getPostsWithStats();
+  const post = posts
+    ?.sort(
+      (post1, post2) => post2.postStats.likesCount - post1.postStats.likesCount
+    )
+    .slice(0, 5);
+  return post;
+};

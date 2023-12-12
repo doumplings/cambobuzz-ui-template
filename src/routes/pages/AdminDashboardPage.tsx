@@ -1,18 +1,17 @@
 import { useLoaderData } from "react-router-dom";
-import AdminHeader from "../components/headers and sidebars/AdminHeader";
-import GrowthGraphWrapper from "../components/userprofile/GrowthGraphWrapper";
-import GrowthStats from "../components/userprofile/GrowthStats";
-import StatsBar from "../components/userprofile/StatsBar";
-import TopPost from "../components/post components/TopPost";
+import AdminHeader from "../../components/HeadersAndSidebar/AdminHeader";
+import GrowthGraphWrapper from "../../components/UserProfile/GrowthGraphWrapper";
+import GrowthStats from "../../components/UserProfile/GrowthStats";
+import StatsBar from "../../components/UserProfile/StatsBar";
+import TopPost from "../../components/Post/TopPost";
 import {
-  GrowthStatsType,
   getGrowthStats,
   getMostLiked,
   getUserStats,
-} from "../utils/getUserData";
-import { GraphDataContext } from "../utils/GraphDataContext";
+} from "../../utils/getUserData";
+import { GraphDataContext } from "../../utils/GraphDataContext";
 import { useEffect, useState } from "react";
-import { StatisticType, getMyStats } from "../api/user.service";
+import { StatisticType, getMyStats } from "../../api/user.service";
 
 export const loader = async () => {
   const [user, userGraphData] = await Promise.all([

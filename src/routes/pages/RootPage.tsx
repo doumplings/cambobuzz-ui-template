@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Header from "../components/headers and sidebars/Header";
-import Sidebar from "../components/headers and sidebars/SideBar";
-import ProfileDrawer from "../components/headers and sidebars/ProfileDrawer";
+import Header from "../../components/HeadersAndSidebar/Header";
+import Sidebar from "../../components/HeadersAndSidebar/SideBar";
+import ProfileDrawer from "../../components/HeadersAndSidebar/ProfileDrawer";
 
 export default function Root() {
   const [sidebarVisible, setSidebarVisibility] = useState(false);

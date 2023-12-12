@@ -1,4 +1,5 @@
 import { useTransition, animated } from "@react-spring/web";
+import { TrendingPosts } from "../Post/TrendingPosts";
 
 interface SidebarProps {
   isVisible: boolean;
@@ -14,14 +15,6 @@ export default function Sidebar({
     enter: { x: 0 },
     leave: { x: -400 },
   });
-  const trends = [
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    "Saepe, voluptatibus! Tempora repellendus nostrum quos earum, mollitia culpa minus fugiat quibusdam molestias amet.",
-    "Accusamus delectus quos assumenda animi distinctio numquam iste.",
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    "Saepe, voluptatibus! Tempora repellendus nostrum quos earum, mollitia culpa minus fugiat quibusdam molestias amet.",
-    "Accusamus delectus quos assumenda animi distinctio numquam iste.",
-  ];
 
   return (
     <>
@@ -57,18 +50,9 @@ export default function Sidebar({
             </div>
             <div id="sidebar-trending">
               <h3 id="trending-title">Trending</h3>
-              {trends.map((item) => {
-                return (
-                  <li id="trend-list">
-                    <img
-                      id="trend-pic"
-                      src="src\assets\Default_pfp.svg.png"
-                      alt="Search Icon"
-                    />
-                    <p id="list-text">{item}</p>
-                  </li>
-                );
-              })}
+              <div className="absolute h-auto top-40 bottom-0 w-full">
+                <TrendingPosts />
+              </div>{" "}
             </div>
           </animated.div>
         ) : (

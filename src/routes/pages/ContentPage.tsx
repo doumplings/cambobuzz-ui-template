@@ -1,10 +1,10 @@
-import { PostsType, getPostsWithStats } from "../api/post.service";
+import { PostsType, getPostsWithStats } from "../../api/post.service";
 import { useState, useEffect } from "react";
-import { MyPosts } from "../components/post components/MyPosts";
-import { Loading } from "../components/Loading";
-import CreatePost from "../components/post components/CreatePost";
-import { useUserContext } from "../utils/UserContext";
-import { usePostsContext } from "../utils/PostsContext";
+import { MyPosts } from "../../components/Post/MyPosts";
+import { Loading } from "../../components/Loading";
+import CreatePost from "../../components/Post/CreatePost";
+import { useUserContext } from "../../Context/UserContext";
+import { usePostsContext } from "../../Context/PostsContext";
 
 const ContentPage = () => {
   const [createPostVisible, setCreatePostVisibility] = useState(false);
