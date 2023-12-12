@@ -7,6 +7,8 @@ export default function Root() {
   const [sidebarVisible, setSidebarVisibility] = useState(false);
   const [profileBarVisible, setprofileBarVisibility] = useState(false);
 
+  //Test PR
+
   return (
     <>
       <Header
@@ -19,14 +21,8 @@ export default function Root() {
           setSidebarVisibility(false);
         }}
       />
-      <Sidebar
-        isVisible={sidebarVisible}
-        onSidebarCloseClick={() => setSidebarVisibility(!sidebarVisible)}
-      />
-      <ProfileDrawer
-        isVisible={profileBarVisible}
-        onSidebarCloseClick={() => setprofileBarVisibility(!profileBarVisible)}
-      />
+      <Sidebar isVisible={sidebarVisible} onSidebarCloseClick={() => setSidebarVisibility(!sidebarVisible)} />
+      <ProfileDrawer isVisible={profileBarVisible} onSidebarCloseClick={() => setprofileBarVisibility(!profileBarVisible)} />
     </>
   );
 }

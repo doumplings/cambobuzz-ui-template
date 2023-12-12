@@ -21,11 +21,7 @@ export default function SignupForm({ onSubmitClick }: SignupForm) {
   }, []);
 
   useEffect(() => {
-    confirmPassword === ""
-      ? setIsPasswordSame(true)
-      : password !== confirmPassword
-      ? setIsPasswordSame(false)
-      : setIsPasswordSame(true);
+    confirmPassword === "" ? setIsPasswordSame(true) : password !== confirmPassword ? setIsPasswordSame(false) : setIsPasswordSame(true);
   }, [password, confirmPassword]);
 
   const handleSubmit = () => {
@@ -56,24 +52,9 @@ export default function SignupForm({ onSubmitClick }: SignupForm) {
         <h1 id="signup-header" className="mb-8 md:mb-0">
           Signup
         </h1>
-        <form
-          className="grid grid-cols-1 place-items-center gap-2"
-          onSubmit={(e) => e.preventDefault()}
-        >
-          <input
-            type="text"
-            placeholder="Name"
-            className="w-full rounded-xl"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />{" "}
-          <input
-            type="email"
-            placeholder="Email"
-            className="w-full rounded-xl"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+        <form className="grid grid-cols-1 place-items-center gap-2" onSubmit={(e) => e.preventDefault()}>
+          <input type="text" placeholder="Name" className="w-full rounded-xl" value={name} onChange={(e) => setName(e.target.value)} />{" "}
+          <input type="email" placeholder="Email" className="w-full rounded-xl" value={email} onChange={(e) => setEmail(e.target.value)} />
           <input
             type={showPassword ? "text" : "password"}
             placeholder="Password"
@@ -88,18 +69,10 @@ export default function SignupForm({ onSubmitClick }: SignupForm) {
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
-          {!isPasswordSame ? (
-            <p className="text-red-500 text-left -translate-x-8 text-sm mb-0">
-              Passwords must match
-            </p>
-          ) : null}
+          {!isPasswordSame ? <p className="text-red-500 text-left -translate-x-8 text-sm mb-0">Passwords must match</p> : null}
           <div className="relative right-24 md:right-10 ">
             <label htmlFor="passwork-visible">Show Password</label>
-            <input
-              id="password-visible"
-              type="checkbox"
-              onClick={() => setShowPassword(!showPassword)}
-            />
+            <input id="password-visible" type="checkbox" onClick={() => setShowPassword(!showPassword)} />
           </div>
           <button
             type="submit"
