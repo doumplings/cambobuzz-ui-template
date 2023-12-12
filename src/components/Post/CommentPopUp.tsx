@@ -1,8 +1,7 @@
 import pfp from "../../assets/pfp.svg";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { CommentsType, getCommentsByPostId } from "../../api/comment.service";
-import { UserType, getMe } from "../../api/user.service";
-import { UserContext, useUserContext } from "../../Context/UserContext";
+import { useUserContext } from "../../Context/UserContext";
 
 interface CommentPopUpProps {
   postId: number;
