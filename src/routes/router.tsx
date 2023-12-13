@@ -2,11 +2,11 @@ import Root from "../routes/pages/RootPage";
 import SignupPage from "../routes/pages/SignupPage";
 import LoginPage from "../routes/pages/LoginPage";
 import ContentPage from "../routes/pages/ContentPage";
-import ProfilePage from "../components/UserProfile/ProfilePage";
+import ProfilePage from "../components/userProfile/ProfilePage";
 import AdminDashboardPage, {
   loader as userLoader,
 } from "../routes/pages/AdminDashboardPage";
-import AdminSidebar from "../components/HeadersAndSidebar/AdminSidebar";
+import AdminSidebar from "../components/headersAndSidebars/AdminSidebar";
 import ErrorPage from "../routes/pages/ErrorPage";
 import { MyProfilePage } from "../routes/pages/MyProfilePage";
 import { RouteObject } from "react-router-dom";

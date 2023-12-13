@@ -1,44 +1,52 @@
-import { useEffect, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import { UserType, getNewUserId } from "../api/user.service";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { getNewUserId, getUserByEmail } from "../api/user.service";
+import { useUserContext } from "../context/UserContext";
+import { SubmitHandler, useForm } from "react-hook-form";
 
-interface SignupForm {
-  onSubmitClick: (user: UserType) => void;
-}
+type formData = {
+  name: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+};
 
-export default function SignupForm({ onSubmitClick }: SignupForm) {
+export default function SignupForm() {
+  const {
+    register,
+    formState: { errors },
+    setError,
+    handleSubmit,
+  } = useForm<formData>();
   const [showPassword, setShowPassword] = useState(false);
-  const [userId, setUserId] = useState(0);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [isPasswordSame, setIsPasswordSame] = useState<boolean>();
   const navigate = useNavigate();
+  const { setUser } = useUserContext();
 
-  useEffect(() => {
-    getNewUserId().then((res) => setUserId(res));
-  }, []);
-
-  useEffect(() => {
-    confirmPassword === ""
-      ? setIsPasswordSame(true)
-      : password !== confirmPassword
-      ? setIsPasswordSame(false)
-      : setIsPasswordSame(true);
-  }, [password, confirmPassword]);
-
-  const handleSubmit = () => {
-    const user: UserType = {
-      id: userId,
-      name: name,
-      email: email,
-      password: password,
-    };
-    if (!isPasswordSame) {
-      return;
+  const onSubmit: SubmitHandler<formData> = (data) => {
+    console.log(data);
+    getUserByEmail(data.email).then((fetchedUser) => {
+      if (fetchedUser.email === data.email) {
+        setError("email", {
+          type: "manual",
+          message: "You already have an account",
+        });
+      }
+    });
+    if (data.password !== data.confirmPassword) {
+      setError("confirmPassword", {
+        type: "manual",
+        message: "Passwords do not match",
+      });
     } else {
-      onSubmitClick(user);
+      getNewUserId().then((newUserId) =>
+        setUser({
+          id: newUserId,
+          name: data.name,
+          email: data.email,
+          password: data.password,
+        })
+      );
+      navigate("/for-you");
     }
   };
 
@@ -56,44 +64,53 @@ export default function SignupForm({ onSubmitClick }: SignupForm) {
         <h1 id="signup-header" className="mb-8 md:mb-0">
           Signup
         </h1>
+        {errors.email && (
+          <p className="text-red-500 text-left text-md mb-0">
+            {errors.email.message}
+          </p>
+        )}
         <form
           className="grid grid-cols-1 place-items-center gap-2"
-          onSubmit={(e) => e.preventDefault()}
+          onSubmit={handleSubmit(onSubmit)}
         >
           <input
             type="text"
             placeholder="Name"
             className="w-full rounded-xl"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            {...register("name", { required: true })}
           />{" "}
           <input
             type="email"
             placeholder="Email"
             className="w-full rounded-xl"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            {...register("email", {
+              required: true,
+              pattern: {
+                value:
+                  /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/,
+                message: "invalid email",
+              },
+            })}
           />
           <input
             type={showPassword ? "text" : "password"}
             placeholder="Password"
             className="w-full rounded-xl"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            {...register("password", {
+              required: true,
+              minLength: {
+                value: 8,
+                message: "Minimum length is 8 characters",
+              },
+            })}
           />
           <input
             type={showPassword ? "text" : "password"}
             placeholder="Confirm Password"
             className="w-full rounded-xl"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
+            {...register("confirmPassword", { required: true })}
           />
-          {!isPasswordSame ? (
-            <p className="text-red-500 text-left -translate-x-8 text-sm mb-0">
-              Passwords must match
-            </p>
-          ) : null}
-          <div className="relative right-24 md:right-10 ">
+          <div className="w-full -translate-y-3">
             <label htmlFor="passwork-visible">Show Password</label>
             <input
               id="password-visible"
@@ -101,12 +118,18 @@ export default function SignupForm({ onSubmitClick }: SignupForm) {
               onClick={() => setShowPassword(!showPassword)}
             />
           </div>
+          {errors.confirmPassword && (
+            <p className="text-red-500 text-left -translate-x-8 text-sm mb-0">
+              {errors.password
+                ? errors.password.message
+                : errors.confirmPassword.message}
+            </p>
+          )}
           <button
             type="submit"
             className="rounded-full bg-gradient-to-tr from-orange-400/40 to-red-500/50 relative top-6 h-10 md:top-0"
-            onClick={handleSubmit}
           >
-            <Link to="../for-you">Sign up</Link>
+            Sign Up
           </button>
         </form>
       </div>

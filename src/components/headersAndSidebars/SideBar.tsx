@@ -1,5 +1,5 @@
 import { useTransition, animated } from "@react-spring/web";
-import { TrendingPosts } from "../Post/TrendingPosts";
+import { TrendingPosts } from "../post/TrendingPosts";
 
 interface SidebarProps {
   isVisible: boolean;

@@ -13,7 +13,7 @@ export const TrendingPosts = () => {
     <div className="grid grid-cols-1 h-full w-full ">
       {posts.map((post) => {
         return (
-          <div className="flex flex-row border-b">
+          <div className="flex flex-row border-b" key={post.id}>
             <img src={pfp} alt="" className="w-8 translate-x-4" />
             <div className="grow ">
               <p className=" text-center mt-8 ">{post.description}</p>

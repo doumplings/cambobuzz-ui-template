@@ -86,9 +86,21 @@ export const getNewUserId = async () => {
   return users.length + 1;
 };
 
-export const getUserbyEmail = async (email: string): Promise<UserType> => {
+export const getUserbyEmailAndPassword = async (
+  email: string,
+  password: string
+): Promise<UserType | undefined> => {
   const users = await getAllUser();
-  const user = users?.filter((data) => data?.email === email);
+  const user = users?.filter(
+    (data) => data.email === email && data.password === password
+  );
 
-  return user[0];
+  return user[0] || undefined;
+};
+
+export const getUserByEmail = async (email: string) => {
+  const users = await getAllUser();
+  const user = users?.filter((data) => data.email === email);
+
+  return user[0] || undefined;
 };
