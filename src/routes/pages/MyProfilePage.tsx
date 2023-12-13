@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import AdminHeader from "../components/headers and sidebars/AdminHeader";
-import StatsBar from "../components/userprofile/StatsBar";
-import { UserInfo } from "../components/userprofile/UserInfo";
-import { StatisticType, getMyStats } from "../api/user.service";
-import { MyPosts } from "../components/post components/MyPosts";
-import { Loading } from "../components/Loading";
-import { useUserContext } from "../utils/UserContext";
-import { usePostsContext } from "../utils/PostsContext";
+import AdminHeader from "../../components/headersAndSidebars/AdminHeader";
+import StatsBar from "../../components/userProfile/StatsBar";
+import { UserInfo } from "../../components/userProfile/UserInfo";
+import { StatisticType, getMyStats } from "../../api/user.service";
+import { MyPosts } from "../../components/post/MyPosts";
+import { Loading } from "../../components/Loading";
+import { useUserContext } from "../../context/UserContext";
+import { usePostsContext } from "../../context/PostsContext";
 
 export const MyProfilePage = () => {
   const [userStats, setUserStats] = useState<StatisticType>();

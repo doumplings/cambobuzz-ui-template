@@ -7,7 +7,6 @@ import {
   useState,
 } from "react";
 import { UserType } from "../api/user.service";
-import { PostsProvider } from "./PostsContext";
 
 interface UserProviderProps {
   children: ReactNode;
@@ -32,7 +31,7 @@ export const UserProvider = ({ children }: UserProviderProps) => {
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
-      <PostsProvider>{children}</PostsProvider>
+      {children}
     </UserContext.Provider>
   );
 };

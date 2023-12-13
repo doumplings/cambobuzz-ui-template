@@ -1,8 +1,7 @@
 import pfp from "../../assets/pfp.svg";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { CommentsType, getCommentsByPostId } from "../../api/comment.service";
-import { UserType, getMe } from "../../api/user.service";
-import { UserContext } from "../../utils/UserContext";
+import { useUserContext } from "../../context/UserContext";
 
 interface CommentPopUpProps {
   postId: number;
@@ -19,12 +18,9 @@ export const CommentPopUp = ({
 }: CommentPopUpProps) => {
   const [comments, setComments] = useState<CommentsType[]>([]);
   const [newCommentDescription, setNewCommentDescription] = useState("");
-  const [user, setUser] = useState<UserType>();
-  const userContext = useContext(UserContext);
-
+  const { user } = useUserContext();
   useEffect(() => {
     getCommentsByPostId({ postId: postId }).then((res) => setComments(res));
-    setUser(userContext?.user);
     return setComments([]);
   }, []);
 

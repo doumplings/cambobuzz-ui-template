@@ -1,6 +1,6 @@
-import { LogOutModal } from "../components/LogOutModal";
+import { LogOutModal } from "../../components/LogOutModal";
 import { useState } from "react";
-import { useUserContext } from "../utils/UserContext";
+import { useUserContext } from "../../context/UserContext";
 
 export const LogOutPage = () => {
   const [isLogOutVisible, setLogOutVisibility] = useState(false);

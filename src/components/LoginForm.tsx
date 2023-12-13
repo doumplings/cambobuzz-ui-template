@@ -1,28 +1,38 @@
 import { useNavigate, Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { UserType, getUserbyEmail } from "../api/user.service";
+import { getUserbyEmailAndPassword } from "../api/user.service";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { useUserContext } from "../context/UserContext";
 
-interface LoginFormProps {
-  onSubmitClick: (user: UserType) => void;
+interface formData {
+  email: string;
+  password: string;
 }
 
-export default function LoginForm({ onSubmitClick }: LoginFormProps) {
+export default function LoginForm() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [user, setUser] = useState<UserType>();
-  const [hasWrongPassword, setHasWrongPassword] = useState(false);
+  const {
+    register,
+    formState: { errors },
+    setError,
+    handleSubmit,
+  } = useForm<formData>();
+  const { user, setUser } = useUserContext();
 
-  useEffect(() => {
-    getUserbyEmail(email).then((res) => setUser(res));
-  }, [email]);
+  const onSubmit: SubmitHandler<formData> = (data) => {
+    console.log(data);
+    getUserbyEmailAndPassword(data.email, data.password).then((res) => {
+      if (res === undefined) {
+        console.log("no user");
 
-  const handleSubmit = () => {
-    if (user?.password !== password) {
-      setHasWrongPassword(true);
-    } else {
-      onSubmitClick(user);
-    }
+        setError("password", {
+          type: "manual",
+          message: "Your Email or Password is Wrong, Please try again.",
+        });
+      } else {
+        setUser(res);
+        navigate("/for-you");
+      }
+    });
   };
 
   return (
@@ -41,14 +51,13 @@ export default function LoginForm({ onSubmitClick }: LoginFormProps) {
       <h1 className="text-center mb-12 md:mb-0 mt-8 translate-y-6 md:translate-y-0">
         Login
       </h1>
-      <form onSubmit={(e) => e.preventDefault()}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <input
           type="email"
           id="email"
           className="rounded-md"
           placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          {...register("email", { required: true, minLength: 8 })}
         />
         <br />
         <input
@@ -56,9 +65,14 @@ export default function LoginForm({ onSubmitClick }: LoginFormProps) {
           id="password"
           className="rounded-md"
           placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />{" "}
+          {...register("password", {
+            required: true,
+            minLength: {
+              value: 8,
+              message: "Minimum Length is 8 characters",
+            },
+          })}
+        />
         <br />
         <a
           id="forgot-password"
@@ -71,28 +85,30 @@ export default function LoginForm({ onSubmitClick }: LoginFormProps) {
         <button
           type="submit"
           className="bg-neutral-300 hover:bg-neutral-400 rounded-md w-full mt-2 text-xl font-bold"
-          onClick={handleSubmit}
         >
-          <Link to="../for-you">Log in</Link>
+          Log In
         </button>
-        {hasWrongPassword ? (
-          <p className="text-red-400 text-sm">
-            Wrong Password, Please Try Again.
+        {errors.password && (
+          <p className="text-red-400 text-sm">{errors.password?.message}</p>
+        )}
+        {user.name !== "" && (
+          <p className="bg-green-300/50 rounded-xl text-center mt-4">
+            Welcome: {user.name}
           </p>
-        ) : null}
-        <div className="mt-8">
-          <p id="already">
-            Don't have an account?{" "}
-            <Link
-              to="/signup"
-              id="create-account"
-              className="absolute right-0 mr-4 text-xs hover:underline"
-            >
-              Create Account
-            </Link>
-          </p>
-        </div>
+        )}
       </form>
+      <div className="mt-8">
+        <p id="already">
+          Don't have an account?{" "}
+          <Link
+            to="/signup"
+            id="create-account"
+            className="absolute right-0 mr-4 text-xs hover:underline"
+          >
+            Create Account
+          </Link>
+        </p>
+      </div>
     </div>
   );
 }
