@@ -1,3 +1,5 @@
+import { getPostsWithStats } from "./post.service";
+
 export type SharesType = {
   id: number;
   description: string;

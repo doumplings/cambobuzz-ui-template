@@ -1,6 +1,5 @@
-import { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
-import { UserContext } from "../../context/UserContext";
+import { useUserContext } from "../../context/UserContext";
 import { LogOutPage } from "../../routes/pages/LogOutPage";
 
 interface Props {
@@ -9,13 +8,13 @@ interface Props {
 }
 
 export default function Header({ onSidebarClick, onProfileClick }: Props) {
-  const userContext = useContext(UserContext);
+  const { user, isLoggedIn } = useUserContext();
 
   return (
     <>
       <div className="header">
         <h1 className="mt-4">CamboBuzz</h1>
-        {userContext?.user.id === 0 ? (
+        {user.id === 0 ? (
           <div className="absolute top-4 w-full md:w-24 md:gap-4 md:right-6 grid grid-cols-2 place-items-center gap-56 text-pink-50 ">
             <Link to="signup" className=" hover:text-pink-200">
               Signup
@@ -26,9 +25,7 @@ export default function Header({ onSidebarClick, onProfileClick }: Props) {
           </div>
         ) : (
           <>
-            <p className="absolute right-4 top-4 ">
-              Signed in as: {userContext?.user.name}
-            </p>
+            <p className="absolute right-4 top-4 ">Signed in as: {user.name}</p>
             <LogOutPage />
           </>
         )}
@@ -37,7 +34,7 @@ export default function Header({ onSidebarClick, onProfileClick }: Props) {
             For You
           </Link>
           <Link
-            to="following"
+            to={!isLoggedIn ? "login" : "following"}
             className="hover:underline active:text-blue-900  "
           >
             Following

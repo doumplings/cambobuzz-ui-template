@@ -4,20 +4,16 @@ import StatsBar from "../../components/userProfile/StatsBar";
 import { UserInfo } from "../../components/userProfile/UserInfo";
 import { StatisticType, getMyStats } from "../../api/user.service";
 import { MyPosts } from "../../components/post/MyPosts";
-import { Loading } from "../../components/Loading";
 import { useUserContext } from "../../context/UserContext";
 import { usePostsContext } from "../../context/PostsContext";
 
 export const MyProfilePage = () => {
   const [userStats, setUserStats] = useState<StatisticType>();
-  const [loading, setLoading] = useState(false);
   const { user } = useUserContext();
   const { posts } = usePostsContext();
 
   useEffect(() => {
-    setLoading(true);
     getMyStats(user.id).then((res) => setUserStats(res));
-    setLoading(false);
   }, []);
 
   const myPosts = posts.filter((post) => post.userId === user.id);
@@ -35,11 +31,7 @@ export const MyProfilePage = () => {
         <StatsBar userStats={userStats} />
       </div>
       <div className="absolute top-[44rem] md:top-72  w-full px-4">
-        {!loading ? (
-          <MyPosts getOnlyMyPosts={true} posts={myPosts} />
-        ) : (
-          <Loading width="10rem" />
-        )}
+        <MyPosts getOnlyMyPosts={true} posts={myPosts} />
       </div>
     </div>
   );

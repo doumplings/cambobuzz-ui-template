@@ -4,6 +4,8 @@ import { CommentButton } from "./CommentButton";
 import { ShareButton } from "./ShareButton";
 import { PostsType } from "../../api/post.service";
 import { CommentPopUp } from "./CommentPopUp";
+import { useUserContext } from "../../context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   item: PostsType;
@@ -12,6 +14,16 @@ interface Props {
 export const PostLikeCommentShareCard = ({ item }: Props) => {
   const [isCommentsVisible, setIsCommentsVisible] = useState(false);
   const [newCommentsCount, setNewCommentsCount] = useState(0);
+  const { isLoggedIn } = useUserContext();
+  const navigate = useNavigate();
+
+  const handleCommentClick = () => {
+    if (!isLoggedIn) {
+      navigate("/login");
+    } else {
+      setIsCommentsVisible(!isCommentsVisible);
+    }
+  };
 
   return (
     <>
@@ -20,7 +32,7 @@ export const PostLikeCommentShareCard = ({ item }: Props) => {
           <LikeButton numLikes={item.postStats.likesCount} />
           <CommentButton
             numComments={item.postStats.commentsCount + newCommentsCount}
-            onCommentClick={() => setIsCommentsVisible(!isCommentsVisible)}
+            onCommentClick={handleCommentClick}
           />
           <ShareButton numShares={item.postStats.sharesCount} />
         </span>

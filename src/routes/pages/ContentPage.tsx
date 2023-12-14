@@ -5,13 +5,15 @@ import { Loading } from "../../components/Loading";
 import CreatePost from "../../components/post/CreatePost";
 import { useUserContext } from "../../context/UserContext";
 import { usePostsContext } from "../../context/PostsContext";
+import { useNavigate } from "react-router-dom";
 
 const ContentPage = () => {
   const [createPostVisible, setCreatePostVisibility] = useState(false);
   const [loading, setLoading] = useState(false);
   const [newPostDescription, setNewPostDescription] = useState("");
-  const { user } = useUserContext();
+  const { user, isLoggedIn } = useUserContext();
   const { posts, setPosts } = usePostsContext();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setLoading(true);
@@ -55,7 +57,11 @@ const ContentPage = () => {
           )}
           onCloseClick={() => setCreatePostVisibility(false)}
           onCreateClick={() => {
-            setCreatePostVisibility(true);
+            if (!isLoggedIn) {
+              navigate("/login");
+            } else {
+              setCreatePostVisibility(true);
+            }
           }}
         />
       )}

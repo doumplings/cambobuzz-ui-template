@@ -100,3 +100,14 @@ export const getTrendingPosts = async (): Promise<PostsType[]> => {
     .slice(0, 5);
   return post;
 };
+
+export const getPostByDescription = async (
+  description: string
+): Promise<PostsType[]> => {
+  const posts = await getPostsWithStats();
+  const post = posts.filter(
+    (post) => post.description.indexOf(description) !== -1
+  );
+
+  return post;
+};

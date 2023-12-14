@@ -1,10 +1,17 @@
 import { useTransition, animated } from "@react-spring/web";
 import { TrendingPosts } from "../post/TrendingPosts";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { getPostByDescription } from "../../api/post.service";
+import { usePostsContext } from "../../context/PostsContext";
 
 interface SidebarProps {
   isVisible: boolean;
   onSidebarCloseClick: () => void;
 }
+
+type Search = {
+  description: string;
+};
 
 export default function Sidebar({
   isVisible,
@@ -15,6 +22,13 @@ export default function Sidebar({
     enter: { x: 0 },
     leave: { x: -400 },
   });
+  const { register, handleSubmit } = useForm<Search>();
+  const { setPosts } = usePostsContext();
+
+  const onSubmit: SubmitHandler<Search> = (data) => {
+    console.log(data);
+    getPostByDescription(data.description).then((res) => setPosts(res));
+  };
 
   return (
     <>
@@ -35,21 +49,33 @@ export default function Sidebar({
               Search CamboBuzz
             </h2>
             <div className="searchbar z-20">
-              <input
-                type="search"
-                placeholder="Search... "
-                className="w-full z-20"
-              />
-              <button id="search-button" className="relative right-6 z-20">
-                <img
-                  id="search-pic"
-                  src="https://www.svgrepo.com/show/7109/search.svg"
-                  alt="Search Icon"
+              <form
+                onSubmit={handleSubmit(onSubmit)}
+                className="flex flex-row gap-2 mx-4 mt-4"
+              >
+                <input
+                  type="search"
+                  placeholder="Search... "
+                  className="w-full z-20 rounded-md px-2 py-0.5"
+                  {...register("description")}
                 />
-              </button>
+
+                <button type="submit" className="a">
+                  <img
+                    className="w-6"
+                    src="https://www.svgrepo.com/show/7109/search.svg"
+                    alt="Search Icon"
+                  />
+                </button>
+              </form>
             </div>
             <div id="sidebar-trending">
-              <h3 id="trending-title">Trending</h3>
+              <h3
+                id="trending-title"
+                className="border-b font-bold translate-y-8 px-4 pb-2 "
+              >
+                Trending
+              </h3>
               <div className="absolute h-auto top-40 bottom-0 w-full">
                 <TrendingPosts />
               </div>{" "}

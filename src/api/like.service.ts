@@ -13,7 +13,7 @@ export const getAllLikes = async (): Promise<LikesType[]> => {
 export const getLikesByUserId = async (userId: number) => {
   const likes = await getAllLikes();
 
-  const myLikes = likes?.filter((data) => data?.userId !== userId);
+  const myLikes = likes?.filter((data) => data?.userId === userId);
 
   return myLikes.length === likes.length ? [] : myLikes;
 };
