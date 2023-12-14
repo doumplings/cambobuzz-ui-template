@@ -17,14 +17,15 @@ export const LogOutPage = () => {
       <LogOutModal
         isVisible={isLogOutVisible}
         onCancelClick={() => setLogOutVisibility(false)}
-        onConfirmClick={() =>
+        onConfirmClick={() => (
           setUser({
             id: 0,
             name: "",
             email: "",
             password: "",
-          })
-        }
+          }),
+          localStorage.clear()
+        )}
       />
     </>
   );

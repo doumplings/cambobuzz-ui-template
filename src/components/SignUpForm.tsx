@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { getNewUserId, getUserByEmail } from "../api/user.service";
 import { useUserContext } from "../context/UserContext";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { ShowPasswordButton } from "./ShowPasswordButton";
 
 type formData = {
   name: string;
@@ -56,7 +57,7 @@ export default function SignupForm() {
         <img
           src="src/assets/close.svg"
           alt="Close Button"
-          className="w-4 absolute cursor-pointer hover:bg-black/10"
+          className="w-4 absolute cursor-pointer p-[3px] rounded hover:bg-black/10"
           onClick={() => {
             navigate(-1);
           }}
@@ -110,12 +111,9 @@ export default function SignupForm() {
             className="w-full rounded-xl"
             {...register("confirmPassword", { required: true })}
           />
-          <div className="w-full -translate-y-3">
-            <label htmlFor="passwork-visible">Show Password</label>
-            <input
-              id="password-visible"
-              type="checkbox"
-              onClick={() => setShowPassword(!showPassword)}
+          <div className="w-full  ">
+            <ShowPasswordButton
+              onCheckboxClick={() => setShowPassword(!showPassword)}
             />
           </div>
           {errors.confirmPassword && (

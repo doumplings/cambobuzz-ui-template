@@ -1,5 +1,6 @@
 import { useTransition, animated } from "@react-spring/web";
 import { Link } from "react-router-dom";
+import { useUserContext } from "../../context/UserContext";
 
 interface SidebarProps {
   isVisible: boolean;
@@ -15,6 +16,7 @@ export default function ProfileDrawer({
     enter: { x: 0 },
     leave: { x: 400 },
   });
+  const { isLoggedIn } = useUserContext();
 
   return (
     <>
@@ -31,13 +33,19 @@ export default function ProfileDrawer({
             className="absolute right-0 z-20 bg-blue-300 h-full w-64 shadow-2xl flex flex-col pt-16 px-4"
           >
             <button className="w-full top-12 text-left rounded p-2 hover:bg-blue-400/50">
-              <Link to="profile" onClick={onSidebarCloseClick}>
+              <Link
+                to={isLoggedIn ? "profile" : "login"}
+                onClick={onSidebarCloseClick}
+              >
                 Profile
               </Link>
             </button>{" "}
             <br />
             <button className=" w-full top-24 text-left rounded p-2 hover:bg-blue-400/50">
-              <Link to="admin/myprofile" onClick={onSidebarCloseClick}>
+              <Link
+                to={!isLoggedIn ? "login" : "admin/myprofile"}
+                onClick={onSidebarCloseClick}
+              >
                 My Profile Insights
               </Link>
             </button>

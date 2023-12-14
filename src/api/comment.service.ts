@@ -17,7 +17,9 @@ export const getAllComments = async (): Promise<CommentsType[]> => {
 export const getCommentsByUserId = async (userId: number) => {
   const comments = await getAllComments();
 
-  const comment = comments?.filter((data) => data?.userId !== userId);
+  // get all comments, filter by comments that aren't yours,
+  // get comments on your posts, comments.postid not equal to postid that is equal to the userid
+  const comment = comments?.filter((data) => data?.userId === userId);
 
   return comment.length === comments.length ? [] : comment;
 };

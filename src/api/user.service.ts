@@ -104,3 +104,17 @@ export const getUserByEmail = async (email: string) => {
 
   return user[0] || undefined;
 };
+
+export const setUserToLocalStorage = (user: UserType) => {
+  const jsonUser = JSON.stringify(user);
+  localStorage.setItem("user", jsonUser);
+};
+
+export const getUserFromLocalStorage = (): UserType | undefined => {
+  const localId = localStorage.getItem("user");
+  if (localId === null) {
+    return undefined;
+  } else {
+    return JSON.parse(localId);
+  }
+};

@@ -45,7 +45,7 @@ export const CommentPopUp = ({
         <input
           type="text"
           placeholder="Your Comment..."
-          className="w-full px-2 rounded-md mb-2 text-sm"
+          className="w-full px-2 rounded-md mb-2 text-sm "
           value={newCommentDescription}
           onChange={(e) => setNewCommentDescription(e.target.value)}
         />

@@ -2,6 +2,8 @@ import { useNavigate, Link } from "react-router-dom";
 import { getUserbyEmailAndPassword } from "../api/user.service";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useUserContext } from "../context/UserContext";
+import { useState } from "react";
+import { ShowPasswordButton } from "./ShowPasswordButton";
 
 interface formData {
   email: string;
@@ -17,6 +19,7 @@ export default function LoginForm() {
     handleSubmit,
   } = useForm<formData>();
   const { user, setUser } = useUserContext();
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   const onSubmit: SubmitHandler<formData> = (data) => {
     console.log(data);
@@ -30,7 +33,10 @@ export default function LoginForm() {
         });
       } else {
         setUser(res);
-        navigate("/for-you");
+        console.log("user logged in");
+        setTimeout(() => {
+          navigate("/for-you");
+        }, 1000);
       }
     });
   };
@@ -61,7 +67,7 @@ export default function LoginForm() {
         />
         <br />
         <input
-          type="password"
+          type={!isPasswordVisible ? "password" : "text"}
           id="password"
           className="rounded-md"
           placeholder="Password"
@@ -73,14 +79,21 @@ export default function LoginForm() {
             },
           })}
         />
+
         <br />
-        <a
-          id="forgot-password"
-          href="#"
-          className="absolute right-0 mr-4 text-xs hover:underline"
-        >
-          Forgot Password?
-        </a>
+        <span className="grid grid-cols-2 place-items-center w-full px-4">
+          <ShowPasswordButton
+            onCheckboxClick={() => setIsPasswordVisible(!isPasswordVisible)}
+          />
+          <a
+            id="forgot-password"
+            href="#"
+            className="absolute right-0 mr-4 text-xs hover:underline"
+          >
+            Forgot Password?
+          </a>
+        </span>
+
         <br />
         <button
           type="submit"
