@@ -1,12 +1,12 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../../context/UserContext";
+import { useUserContext } from "../../context/UserContext";
 
 const ProfilePage = () => {
   const navigate = useNavigate();
   const [passwordVisible, setPasswordVisibility] = useState(false);
   const [inputReadOnly, setInputReadOnly] = useState(true);
-  const userContext = useContext(UserContext);
+  const { user } = useUserContext();
 
   return (
     <div id="profile-page">
@@ -24,7 +24,7 @@ const ProfilePage = () => {
           id="profile-detail-input"
           className={inputReadOnly ? "unmodifiable" : "modifiable"}
           type="text"
-          value={userContext?.user.name}
+          value={user.name}
           readOnly={inputReadOnly}
         />{" "}
         <br />
@@ -32,7 +32,7 @@ const ProfilePage = () => {
           id="profile-detail-input"
           className={inputReadOnly ? "unmodifiable" : "modifiable"}
           type="text"
-          value={userContext?.user.email}
+          value={user.email}
           readOnly={inputReadOnly}
         />{" "}
         <br />
@@ -40,7 +40,7 @@ const ProfilePage = () => {
           id="profile-detail-input"
           className={inputReadOnly ? "unmodifiable" : "modifiable"}
           type={passwordVisible ? "text" : "password"}
-          value={userContext?.user.password}
+          value={user.password}
           readOnly={inputReadOnly}
         />
         <br />
