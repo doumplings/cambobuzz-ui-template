@@ -1,7 +1,4 @@
-import { useContext } from "react";
 import { Chart } from "react-google-charts";
-import { GraphDataContext } from "../../utils/GraphDataContext";
-import { getFollowersYearly } from "../../utils/getFollowersYearly";
 
 export const data = [
   ["Months", "Followers"],
@@ -31,14 +28,10 @@ export const options = {
 };
 
 const GrowthChart = () => {
-  const graphData = useContext(GraphDataContext);
-
-  const chartData = getFollowersYearly(graphData);
-
   return (
     <Chart
       chartType="LineChart"
-      data={chartData}
+      data={data}
       options={options}
       width={"100%"}
       height={"200px"}

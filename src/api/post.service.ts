@@ -111,3 +111,18 @@ export const getPostByDescription = async (
 
   return post;
 };
+export const getTopPost = (
+  posts: PostsType[],
+  userId: number
+): PostsType | undefined => {
+  const topPost = posts
+    .filter((post) => post.userId === userId)
+    .sort(
+      (post1, post2) => post2.postStats.likesCount - post1.postStats.likesCount
+    )
+    .slice(0, 2);
+
+  console.log(topPost);
+
+  return topPost[0] || undefined;
+};

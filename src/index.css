@@ -4,14 +4,6 @@
 
 :root { 
   font-family: Arial, Helvetica, sans-serif;
-  --cool-gray: rgb(151, 152, 196);
-  --marian-blue: rgb(69, 71, 123);
-  --vista-blue: rgb(135, 165, 222);
-  --champagne-pink: rgb(240, 222, 225);
-  --lavender-blush: rgb(234, 220, 209);
-  --cambridge-blue: rgb(147, 186, 170);
-  --raisin-black: rgb(22, 22, 39);
-  background-color: var(--marian-blue);
   overflow: hidden;
 }
 
@@ -23,7 +15,7 @@
   transform: translate(-50%,-50%);
   padding: 1rem;
   border-radius: 0.5rem;
-  box-shadow: 0 4px 10px 4px var(--champagne-pink);
+  box-shadow: 0 4px 10px 4px grey;
 }
 
 #login-modal h1{
@@ -77,11 +69,9 @@ transform: translate(0,0.15rem);
   left: 0;
   top: 0;
   width: 100%;
-  background-color: var(--marian-blue);
 }
 
 .header h1 {
-  -webkit-text-fill-color: var(--cambridge-blue);
   text-align: center;
   font-size: 2rem;
   font-weight: bold;
@@ -107,7 +97,6 @@ transform: translate(0,0.15rem);
 }
 
 #profile-pic:hover {
-  background-color: rgba(0,0,0,0.2);
   cursor: pointer;
 }
 
@@ -118,7 +107,6 @@ transform: translate(0,0.15rem);
   z-index: 3;
   border: none;
   margin-top: 2.5rem;
-  background-color: transparent;
 }
 
 #sidebar {
@@ -128,8 +116,6 @@ transform: translate(0,0.15rem);
   top: 0;
   height: 100%;
   width: 18rem;
-  background-color: var(--vista-blue);
-  box-shadow: 1rem 0 1rem 0 rgba(0,0,0,0.2);
 }
 
 #sidebar-close-btn {
@@ -150,7 +136,6 @@ transform: translate(0,0.15rem);
 
 #sidebar-close-btn.active {
   position: absolute;
-  background-color: var(--vista-blue);
   left: 17.5rem;
 }
 
@@ -205,7 +190,6 @@ transform: translate(0,0.15rem);
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--cool-gray);
 }
 
 #profile-modal {
@@ -213,8 +197,6 @@ transform: translate(0,0.15rem);
   border: none;
   border-radius: 5px;
   padding: 1rem;
-  box-shadow: 0 2px 8px 6px rgba(240, 222, 225, 0.6);
-  background-color: var(--cambridge-blue);
 }
 
 #profile-page-img {
@@ -235,11 +217,9 @@ transform: translate(0,0.15rem);
   z-index: 2;
   float: right;
   border: none;
-  background-color: transparent;
 }
 
 #edit-btn:hover {
-  background-color: rgba(0,0,0,0.2);
   cursor: pointer;
 }
 
@@ -252,18 +232,6 @@ transform: translate(0,0.15rem);
   border-radius: 5px;
 }
 
-#profile-detail-input.unmodifiable {
-    background-color: rgba(0,0,0,0.2);
-    -webkit-text-fill-color: var(--lavender-blush);
-}
-
-#profile-detail-input.unmodifiable:hover {
-  cursor: not-allowed;
-}
-
-#profile-detail-input.modifiable {
-  background-color: field;
-}
 
 #show-password-checkbox {
   transform: translate(0,2px);
@@ -277,7 +245,6 @@ transform: translate(0,0.15rem);
 }
 
 .profile-btn:hover {
-  background-color: rgba(0,0,0,0.2);
   cursor: pointer;
 }
 
@@ -294,27 +261,19 @@ transform: translate(0,0.15rem);
   overflow: auto;
   width: 100%;
   height: auto;
-  background-color: var(--cool-gray);
 }
 
 #for-you-modal {
   position: absolute;
-  top:1rem;
   left: 50%;
   transform: translate(-50%);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 2rem;
   list-style: none;
 }
 
-#for-you-modal li {
-  padding: 1rem;
-  border-radius: 5px;
-  background-color: var(--marian-blue);
-  -webkit-text-fill-color: var(--cambridge-blue);
-}
+
 
 #for-you-modal h4 {
   font-size: 1rem;
@@ -339,7 +298,6 @@ transform: translate(0,0.15rem);
 
 #heart-btn:hover {
   cursor: pointer;
-  background-color: rgba(0,0,0,0.2);
 }
 
 #create-post-img {
@@ -353,7 +311,6 @@ transform: translate(0,0.15rem);
   bottom: 3rem;
   border-radius: 10px;
   border: none;
-  background-color: transparent;
 }
 
 #create-post-page {
@@ -366,13 +323,8 @@ transform: translate(0,0.15rem);
   align-items: center;
   width: 100%;
   height: 100%;
-  background-color: var(--cool-gray);
 }
 
-#create-post-modal {
- 
-  background-color: var(--cambridge-blue);
-}
 
 #create-post-modal input {
   padding: 0.5rem 1rem 3rem 0.5rem;

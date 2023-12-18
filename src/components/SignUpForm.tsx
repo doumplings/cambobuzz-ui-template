@@ -26,29 +26,30 @@ export default function SignupForm() {
   const onSubmit: SubmitHandler<formData> = (data) => {
     console.log(data);
     getUserByEmail(data.email).then((fetchedUser) => {
-      if (fetchedUser.email === data.email) {
+      if (fetchedUser === undefined) {
+        if (data.password !== data.confirmPassword) {
+          setError("confirmPassword", {
+            type: "manual",
+            message: "Passwords do not match",
+          });
+        } else {
+          getNewUserId().then((newUserId) =>
+            setUser({
+              id: newUserId,
+              name: data.name,
+              email: data.email,
+              password: data.password,
+            })
+          );
+          navigate("/for-you");
+        }
+      } else if (fetchedUser.email === data.email) {
         setError("email", {
           type: "manual",
           message: "You already have an account",
         });
       }
     });
-    if (data.password !== data.confirmPassword) {
-      setError("confirmPassword", {
-        type: "manual",
-        message: "Passwords do not match",
-      });
-    } else {
-      getNewUserId().then((newUserId) =>
-        setUser({
-          id: newUserId,
-          name: data.name,
-          email: data.email,
-          password: data.password,
-        })
-      );
-      navigate("/for-you");
-    }
   };
 
   return (

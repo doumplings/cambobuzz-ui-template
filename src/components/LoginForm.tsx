@@ -49,7 +49,7 @@ export default function LoginForm() {
       <img
         src="src/assets/close.svg"
         alt="Close Button"
-        className="w-4 absolute cursor-pointer z-10 hover:bg-black/10"
+        className="w-4 absolute cursor-pointer p-[3px] rounded z-10 hover:bg-black/10"
         onClick={() => {
           navigate(-1);
         }}

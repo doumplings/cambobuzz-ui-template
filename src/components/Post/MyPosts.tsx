@@ -29,7 +29,7 @@ export const MyPosts = ({ posts, getOnlyMyPosts }: MyPostsProps) => {
             return (
               <li
                 key={item.id}
-                className="bg-violet-50 list-none mb-4 rounded-md shadow-md px-4 pb-4"
+                className="list-none px-4 pb-4 border-b border-x"
               >
                 <img
                   id="content-profile-pic"

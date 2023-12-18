@@ -30,7 +30,7 @@ export default function ProfileDrawer({
         item ? (
           <animated.div
             style={style}
-            className="absolute right-0 z-20 bg-blue-300 h-full w-64 shadow-2xl flex flex-col pt-16 px-4"
+            className="absolute right-0 z-20 bg-blue-50 h-full w-64 shadow-2xl flex flex-col pt-16 px-4"
           >
             <button className="w-full top-12 text-left rounded p-2 hover:bg-blue-400/50">
               <Link
