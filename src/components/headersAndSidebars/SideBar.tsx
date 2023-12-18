@@ -43,7 +43,7 @@ export default function Sidebar({
           <animated.div
             style={style}
             id="sidebar"
-            className="h-screen overflow-auto"
+            className="h-screen overflow-auto bg-slate-50"
           >
             <h2 id="search-title" className="mt-4">
               Search CamboBuzz
@@ -56,7 +56,7 @@ export default function Sidebar({
                 <input
                   type="search"
                   placeholder="Search... "
-                  className="w-full z-20 rounded-md px-2 py-0.5"
+                  className="w-full z-20 rounded-md px-2 py-0.5 outline"
                   {...register("description")}
                 />
 

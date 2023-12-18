@@ -8,7 +8,7 @@ interface AdminHeaderProps {
 
 const AdminHeader = ({ onMailClick }: AdminHeaderProps) => {
   return (
-    <div className="absolute h-8 w-full right-0 top-0 shadow-2xl ">
+    <div className="absolute h-8 w-full right-0 top-0 shadow-2xl bg-slate-50">
       <button className="md:hidden">
         <Link to="/for-you">
           <img

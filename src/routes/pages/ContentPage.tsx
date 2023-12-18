@@ -23,7 +23,7 @@ const ContentPage = () => {
   }, [posts]);
 
   return (
-    <div id="for-you-page" className="top-[7rem] md:top-[8rem]">
+    <div id="for-you-page" className="top-[5rem] md:top-[8rem] bg-sky-50">
       {createPostVisible ? null : (
         <div id="for-you-modal" className="md:w-1/2 w-11/12 transition-all">
           {!loading ? <MyPosts posts={posts} /> : <Loading width={"10rem"} />}
