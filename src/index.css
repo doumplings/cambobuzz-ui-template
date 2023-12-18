@@ -265,7 +265,6 @@ transform: translate(0,0.15rem);
 
 #for-you-modal {
   position: absolute;
-  top:1rem;
   left: 50%;
   transform: translate(-50%);
   display: flex;
