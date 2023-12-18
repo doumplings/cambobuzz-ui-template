@@ -38,9 +38,11 @@ const CreatePost = ({
       viewCount: 0,
       userId: user.id || 0,
     };
+
     data.newPostDescription === ""
       ? null
       : setPosts((prev) => [...prev, newPost]);
+    onSubmitClick();
   };
 
   return (
@@ -61,7 +63,6 @@ const CreatePost = ({
                 id="create-post-submit-btn"
                 type="submit"
                 className="float-right font-bold text-xl mt-2 hover:bg-gray-500/20 rounded px-2"
-                onClick={onSubmitClick}
               >
                 Post
               </button>

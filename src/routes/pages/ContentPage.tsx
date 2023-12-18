@@ -20,7 +20,7 @@ const ContentPage = () => {
       .then((res) => (posts.length === 0 ? setPosts(res) : null))
       .finally(() => setLoading(false));
     return;
-  }, []);
+  }, [posts]);
 
   return (
     <div id="for-you-page" className="top-[7rem] md:top-[8rem]">
