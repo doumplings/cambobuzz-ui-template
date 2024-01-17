@@ -1,42 +1,68 @@
-import { useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { PostsType } from "../../api/post.service";
+import { useUserContext } from "../../context/UserContext";
+import { usePostsContext } from "../../context/PostsContext";
 
 interface CreatePostProps {
   newPostVisible: boolean;
   onCloseClick: () => void;
   onCreateClick: () => void;
-  onSubmit: (newPost: string) => void;
-  userName: string;
+  onSubmitClick: () => void;
 }
+
+type formData = {
+  newPostDescription: string;
+};
 
 const CreatePost = ({
   newPostVisible,
   onCloseClick,
   onCreateClick,
-  onSubmit,
-  userName,
+  onSubmitClick,
 }: CreatePostProps) => {
-  const [newPost, setNewPost] = useState("");
+  const { register, handleSubmit } = useForm<formData>();
+  const { user } = useUserContext();
+  const { posts, setPosts } = usePostsContext();
+
+  const onSubmit: SubmitHandler<formData> = (data) => {
+    console.log(data);
+    const newPost: PostsType = {
+      id: posts.length + 1,
+      description: data.newPostDescription,
+      user: user,
+      postStats: {
+        likesCount: 0,
+        commentsCount: 0,
+        sharesCount: 0,
+      },
+      viewCount: 0,
+      userId: user.id || 0,
+    };
+
+    data.newPostDescription === ""
+      ? null
+      : setPosts((prev) => [...prev, newPost]);
+    onSubmitClick();
+  };
 
   return (
     <>
       {newPostVisible ? (
         <div id="create-post-page" className="">
           <div id="create-post-modal" className="absolute rounded-xl p-2">
-            <p>Signed In as : {userName}</p>
-            <form onSubmit={(e) => e.preventDefault()}>
+            <p>Signed In as : {user.name}</p>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <input
                 type="text"
                 placeholder="New Post..."
                 className="rounded"
-                value={newPost}
-                onChange={(e) => setNewPost(e.target.value)}
-              />{" "}
+                {...register("newPostDescription", { required: true })}
+              />
               <br />
               <button
                 id="create-post-submit-btn"
                 type="submit"
                 className="float-right font-bold text-xl mt-2 hover:bg-gray-500/20 rounded px-2"
-                onClick={() => (onSubmit(newPost), setNewPost(""))}
               >
                 Post
               </button>

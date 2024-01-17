@@ -20,12 +20,12 @@ export const MyProfilePage = () => {
 
   return (
     <div
-      className="absolute w-full h-screen top-0 bottom-0 right-0 bg-violet-100 
+      className="absolute w-full h-screen top-0 bottom-0 right-0 bg-slate-50
   md:w-3/4  flex flex-col flex-wrap overflow-auto transition-all"
     >
       <AdminHeader onMailClick={() => console.log("mail clicked")} />
       <div className="absolute top-8 right-0 w-full h-26 p-4">
-        <UserInfo user={user} />
+        <UserInfo />
       </div>
       <div className="absolute top-36 h-36 w-full">
         <StatsBar userStats={userStats} />

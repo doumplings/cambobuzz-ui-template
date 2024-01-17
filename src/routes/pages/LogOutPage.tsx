@@ -9,7 +9,7 @@ export const LogOutPage = () => {
   return (
     <>
       <button
-        className="absolute right-12 mt-1 text-sm hover:underline top-24"
+        className="absolute md:right-12 md:mt-1 text-sm hover:underline md:top-24 right-4 top-16"
         onClick={() => setLogOutVisibility(true)}
       >
         Log Out
